@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Book>
+
+<h1>Books</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Rating</th>
+            <th>Date Added</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BookName</td>
+                <td>@item.Author</td>
+                <td>@item.Rating</td>
+                <td>@item.DateAdded.ToShortDateString()</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
